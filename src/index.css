@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@theme {
+    --color-ButtonMain: #127a74;
+    --color-BackgroundMain: #0a1212;
+    --color-TextMain: #ffffff;
+    --color-GradientStart: #40ffaa, #4079ff, #40ffaa, #4079ff, #40ffaa;
+}
