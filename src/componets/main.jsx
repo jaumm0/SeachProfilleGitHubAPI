@@ -34,7 +34,7 @@ function Main() {
 
   return (
     <main className="min-h-screen grid place-items-center  min-h-screen">
-      <section className="grid grid-rows-2 gap-12 text-TextMain">
+      <section className="grid grid-rows-2 gap-12 text-TextMain ">
 
         {/* Título */}
         <section className="text-center">
@@ -48,7 +48,7 @@ function Main() {
         </section>
 
         {/* Input e botão */}
-        <section className="flex justify-center items-center gap-4">
+        <section className="flex justify-center items-center gap-4 ">
           <div className="relative">
             <Github className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
             <input
@@ -56,19 +56,19 @@ function Main() {
               onChange={(e) => setUsername(e.target.value)}
               type="text"
               placeholder="Enter GitHub username"
-              className="border border-gray-300 rounded-xl pl-10 pr-4 py-2 w-120 h-13"
+              className="border border-gray-300 rounded-xl pl-14 pr-4  py-2 w-120 h-13"
             />
           </div>
           <button
             onClick={Buscarperfil}
-            className="h-13 w-32 rounded-xl bg-ButtonMain text-white font-semibold hover:bg-Hoverbutton hover:shadow-ButtonMain transition-all duration-200 cursor-pointer hover:scale-105"
+            className="h-13 w-32 rounded-xl bg-ButtonMain text-black font-semibold hover:bg-Hoverbutton hover:shadow-ButtonMain transition-all duration-200 cursor-pointer hover:scale-105"
           >
             Search
           </button>
         </section>
         <section className=''>
             {data &&( 
-              <div className=' flex justify-center  h-50   gap-4 rounded-xl hover:bg-white transition-all duration-200 text-white  hover:text-black  text-black p-5 '> 
+              <div className=' flex justify-center  h-50   gap-4 rounded-xl hover:bg-white transition-all duration-200 text-white  hover:text-black  p-5 '> 
                 <div className='grid grid-cols-1'>
                   <img 
                       className='w-40 h-40 rounded-xl  place-self-start '
@@ -76,7 +76,7 @@ function Main() {
                       alt="" 
                     />
                     <p
-                      className='flex justify-center items-center w-25 h-6 rounded-xl text-white bg-ButtonMain '
+                      className='flex justify-center items-center w-25 h-6  rounded-xl position relative left-17 bottom-3 text-black font- bg-ButtonMain '
                       >
                         @{data.login}
                     </p>
@@ -133,17 +133,23 @@ function Main() {
                             href={repo.html_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block border border-gray-300 rounded-xl p-4 mb-4 transition-all h-30 duration-200"
+                            className="block border border-gray-300 hover:scale-105  rounded-xl w-200 p-4 mb-4 transition-all h-30 duration-200"
                           >
+                            Nome repositorio: 
                             {repo.name}
+                            <p
+                            className='flex  '>Sobre:
+                              {repo.description}
+                            </p>
                           </a>
+                          
                         </div> 
                         ))}
                         </li>
                                 <div>
                             {repos.length > verrepos && (
                               <button
-                                className='h-13 w-50 rounded-xl bg-ButtonMain text-white font-semibold hover:shadow-ButtonMain hover:bg-Hoverbutton transition-all duration-200 cursor-pointer hover:scale-105'
+                                className='h-13 w-50 rounded-xl bg-ButtonMain  text-black font-semibold hover:shadow-ButtonMain hover:bg-Hoverbutton transition-all duration-200 cursor-pointer hover:scale-105'
                                 onClick={() => setVerrepos(repos.length)}
                               >
                                 Show all repositories
@@ -157,6 +163,6 @@ function Main() {
         </section>
     </main>
   );
-}
+}''
 
 export default Main;

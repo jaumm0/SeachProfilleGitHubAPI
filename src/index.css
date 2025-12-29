@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-    --color-ButtonMain: #127a74;
+    --color-ButtonMain: #19e6d5;
     --color-Hoverbutton: #19968e;
     --color-BackgroundMain: #0a1212;
     --color-TextMain: #ffffff;
