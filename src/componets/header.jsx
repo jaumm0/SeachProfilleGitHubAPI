@@ -7,7 +7,6 @@ function Header() {
         <h2
         className='text-4xl font-bold text-TextMain mb-4'
         >DevStack</h2>
-
     </header>
     )
 }
