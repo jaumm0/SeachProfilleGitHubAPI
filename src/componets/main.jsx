@@ -9,12 +9,14 @@ function Main() {
   const [error, setError] = useState(null);
   const [verrepos, setVerrepos] = useState(15);
 
+
   async function Buscarperfil() {
     try {
       setError(null);
 
       const profile = await githubprofile(username);
       const repos = await githubrepos(username);
+      
 
       setData(profile);
       setRepos(repos);
@@ -62,14 +64,14 @@ function Main() {
 
         <section className="">
           {data && (
-            <div className="flex justify-center h-50 gap-4 rounded-xl hover:bg-white transition-all duration-200 text-white hover:text-black p-5">
+            <div className="flex justify-center h-50 gap-4 rounded-xl bg-Repocolor transition-all duration-500 text-white hover:bg-gradient-to-r from-blue-300 to-black p-5">
               <div className="grid grid-cols-1">
                 <img
                   className="w-40 h-40 rounded-xl place-self-start"
                   src={data.avatar_url}
                   alt=""
                 />
-                <p className="flex justify-center items-center w-25 h-6 rounded-xl position relative left-17 bottom-3 text-black font- bg-ButtonMain">
+                <p className="flex justify-center items-center w-25 h-6 rounded-xl position relative left-17 bottom-3 text-black  bg-ButtonMain">
                   @{data.login}
                 </p>
               </div>
@@ -80,21 +82,23 @@ function Main() {
                 </h2>
 
                 <div className="grid w-150 h-30 text-center">
-                  <p className="w-150">{data.bio}</p>
+                  <p className="w-145">
+                    {data.bio}
+                    </p>
 
-                  <p className="flex items-center gap-2 w-40 pl-1">
+                  <p className="flex items-center gap-1 w-35 pr-3">
                     <User />
                     <span>{data.followers}</span>
                     Followers
                   </p>
 
-                  <p className="flex items-center gap-2 w-40 pl-1">
+                  <p className="flex items-center gap-2 w-40 pr-1">
                     <UserPlus />
                     <span>{data.following}</span>
                     Following
                   </p>
 
-                  <p className="flex items-center gap-2 w-40 pl-1">
+                  <p className="flex items-center gap-2 w-40 pr-1">
                     <BookOpen />
                     <span>{data.public_repos}</span>
                     Repositories
@@ -105,23 +109,24 @@ function Main() {
           )}
 
           <section>
-            <section className="p-5 mt-10 transition-all duration-200 text-white font-bold text-black">
+            <section className="p-5 mt-10  transition-all duration-200  text-white font-bold text-black">
               <ul>
                 <li>
+                  
                   {repos.slice(0, verrepos).map((repo) => (
                     <div key={repo.id}>
+                      
                       <a
                         href={repo.html_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block border border-gray-300 hover:scale-105 rounded-xl w-200 p-4 mb-4 transition-all h-30 duration-200"
+                        className="block  bg-Repocolor hover:bg-gradient-to-r from-blue-300 to-gray-400  hover:scale-105 rounded-xl w-200 p-4 mb-4 transition-all h-30 duration-200"
                       >
-                        Nome repositorio:
-                        {repo.name}
+                        <span className=''>{repo.name}</span>
 
-                        <p className="flex">
+                        <p className="">
                           Sobre:
-                          {repo.description}
+                          <span className='pl-2'>{repo.description}</span>
                         </p>
                       </a>
                     </div>
