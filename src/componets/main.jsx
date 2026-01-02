@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Github, Search, User, BookOpen, UserPlus } from 'lucide-react';
 import { githubprofile, githubrepos } from './api';
+import GradientText from './GradientText'
+
 
 function Main() {
   const [username, setUsername] = useState('');
@@ -8,7 +10,6 @@ function Main() {
   const [repos, setRepos] = useState([]);
   const [error, setError] = useState(null);
   const [verrepos, setVerrepos] = useState(15);
-
 
   async function Buscarperfil() {
     try {
@@ -29,11 +30,21 @@ function Main() {
 
   return (
     <main className="min-h-screen grid place-items-center  min-h-screen">
-      <section className="grid grid-rows-2 gap-12 text-TextMain ">
+      <section className="grid grid-rows-2 gap-12 text-TextMain  ">
         {/* Título */}
-        <section className="text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-GradientStart">
-            Explore Developer Profiles
+        <section className="text-center flex items-center flex-col">
+          <h1 className="text-4xl gap-3 md:text-5xl flex flex-cols font-bold mb-4 text-GradientStart">
+            Explore 
+              <GradientText
+                    colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                    animationSpeed={3}
+
+                    className="font-bold"
+                  >
+                   Developer 
+                  </GradientText>
+            
+            Profiles
           </h1>
           <p className="mb-3 text-xl py-2 font-medium">
             Discover GitHub users, analyze their repositories, and track their <br />
@@ -64,7 +75,7 @@ function Main() {
 
         <section className="">
           {data && (
-            <div className="flex justify-center h-50 gap-4 rounded-xl bg-Repocolor transition-all duration-500 text-white hover:bg-gradient-to-r from-blue-300 to-black p-5">
+            <div className="flex justify-center h-50 gap-4 rounded-xl bg-Repocolor  text-white transition duration-200 delay-100 hover:bg-gray-600 p-5">
               <div className="grid grid-cols-1">
                 <img
                   className="w-40 h-40 rounded-xl place-self-start"
@@ -75,12 +86,16 @@ function Main() {
                   @{data.login}
                 </p>
               </div>
-
-              <div className="grid font-bold w-150 place-items-end">
-                <h2 className="text-3xl font-bold w-150 place-self-start">
-                  {data.name}
-                </h2>
-
+              <div className="font-bold transition delay-700 duration-300 ">
+              
+                   <GradientText
+                    colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                    animationSpeed={3}
+                    showBorder={false}
+                    className="text-3xl font-bold  "
+                  >
+                    {data.name}
+                  </GradientText>
                 <div className="grid w-150 h-30 text-center">
                   <p className="w-145">
                     {data.bio}
@@ -109,24 +124,22 @@ function Main() {
           )}
 
           <section>
-            <section className="p-5 mt-10  transition-all duration-200  text-white font-bold text-black">
+            <section className="p-5 mt-10 text-white  text-black">
               <ul>
                 <li>
-                  
                   {repos.slice(0, verrepos).map((repo) => (
                     <div key={repo.id}>
-                      
                       <a
                         href={repo.html_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block  bg-Repocolor hover:bg-gradient-to-r from-blue-300 to-gray-400  hover:scale-105 rounded-xl w-200 p-4 mb-4 transition-all h-30 duration-200"
+                        className="block  bg-Repocolor transition duration-200 delay-50 hover:bg-gray-600  hover:scale-105 rounded-xl w-200 p-4 mb-4 h-30 "
                       >
                         <span className=''>{repo.name}</span>
 
                         <p className="">
                           Sobre:
-                          <span className='pl-2'>{repo.description}</span>
+                          <span className='pl-2 font-roboto'>{repo.description}</span>
                         </p>
                       </a>
                     </div>
